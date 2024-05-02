@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service # Name of the Kubernetes Service
+spec:
+  selector:
+    tier: frontend # Selector to match Pods with the label 'tier: frontend'
+  clusterIP: 10.99.132.220 # Cluster IP address assigned to the Service
+  externalTrafficPolicy: Cluster # Specifies how external traffic is handled (Cluster here)
+  ports:
+    - name: myport # Name of the port
+      port: 8037 # Port exposed by the Service (to access from outside)
+      protocol: TCP # Protocol used (TCP)
+      targetPort: 3040 # Target port of the Pods selected by the Service
+  type: LoadBalancer # Type of the Service (LoadBalancer here)

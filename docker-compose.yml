@@ -1,0 +1,29 @@
+version: '3.8'  # Docker Compose file version
+
+services:  # Definition of Docker services
+
+  app:  # First service named 'app'
+    build: .  # Build context for the Docker image (current directory)
+    image: somanshahuja/myimage:1.1.2  # Name and tag of the Docker image
+    ports:  # Port mapping configuration
+      - '3043:3040'  # Maps host port 3043 to container port 3040
+    environment:  # Environment variables for the container
+      - PORT=3043  # Sets the PORT environment variable to 3043
+    container_name: my-app4  # Custom name for the container
+    networks:  # Networks configuration
+      - my-net  # Connects the container to the 'my-net' network
+
+  app1:  # Second service named 'app1'
+    build: .  # Build context for the Docker image (current directory)
+    image: somanshahuja/myimage:1.1.2  # Name and tag of the Docker image
+    ports:  # Port mapping configuration
+      - '3044:3040'  # Maps host port 3044 to container port 3040
+    environment:  # Environment variables for the container
+      - PORT=3044  # Sets the PORT environment variable to 3044
+    container_name: my-app3  # Custom name for the container
+    networks:  # Networks configuration
+      - my-net  # Connects the container to the 'my-net' network
+
+networks:  # Definition of Docker networks
+  my-net:  # Network named 'my-net'
+    driver: bridge  # Specifies the network driver as 'bridge' for container communication

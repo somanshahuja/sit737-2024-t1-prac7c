@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  labels:
+    tier: frontend
+spec:
+  containers:
+    - image: somanshahuja/myimage:1.1.2
+      name: nodewebapp
+      ports:
+        - containerPort: 3040
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always

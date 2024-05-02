@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment # Name of the deployment
+  labels:
+    app: myapp # Labels to identify the application
+    tier: frontend # Label to identify the tier of the application
+spec:
+  replicas: 3 # Number of desired replicas (instances) of the application
+  selector:
+    matchLabels:
+      tier: frontend # Selector to match labels for identifying pods controlled by this deployment
+  template:
+    metadata:
+      labels:
+        tier: frontend # Labels to apply to pods created from this template
+    spec:
+      containers:
+        - name: mynode # Name of the container
+          # imagePullPolicy: Never  # Optionally specify the image pull policy (commented out)
+          image: somanshahuja/myimage:1.1.2 # Docker image to use for the container
+          ports:
+            - containerPort: 3040 # Port to expose on the container
